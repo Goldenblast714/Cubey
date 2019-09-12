@@ -1,3 +1,4 @@
+/* globals Wick, createjs, Blob */
 window.onload = function () {
   function handleComplete () {
     var projectData = queue.getResult('project')
