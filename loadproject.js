@@ -1,18 +1,19 @@
 /* globals Wick, createjs, Blob */
 window.onload = function () {
   function handleComplete () {
-    var projectData = queue.getResult('project')
-    Wick.WickFile.fromWickFile(new Blob([new Uint8Array(projectData)]), project => {
-      playProject(project)
-    })
+    var projectData = queue.getResult( 'project' )
+    Wick.WickFile.fromWickFile( new Blob( [ new Uint8Array( projectData ) ] ), project => {
+      playProject( project )
+    } )
   }
 
-  function handleProgress (event) {
-    const container = document.getElementById('loading-bar')
-    container.innerHTML = 'Loading... ' + ((event.loaded * 100).toFixed(1)) + '%'
+  function handleProgress ( event ) {
+    const container = document.getElementById( 'loading-bar' )
+    container.innerHTML = 'Loading... ' + ( ( event.loaded * 100 ).toFixed( 1 ) ) + '%'
+    document.querySelector( 'progress' ).value = ( ( event.loaded * 100 ).toFixed( 1 ) )
   }
 
-  function playProject (project) {
+  function playProject ( project ) {
     window.project = project
 
     document.title = project.name
@@ -32,23 +33,23 @@ window.onload = function () {
     project.focus = project.root
     project.focus.timeline.playheadPosition = 1
 
-    project.play({
+    project.play( {
       onAfterTick: () => {
         project.view.render()
       },
       onError: error => {
-        console.error('Project threw an error!')
-        console.error(error)
+        console.error( 'Project threw an error!' )
+        console.error( error )
       }
-    })
+    } )
   }
 
-  var container = document.getElementById('wick-canvas-container')
+  var container = document.getElementById( 'wick-canvas-container' )
   var queue = new createjs.LoadQueue()
-  queue.on('complete', handleComplete, this)
-  queue.on('progress', handleProgress, this)
-  queue.loadManifest([
+  queue.on( 'complete', handleComplete, this )
+  queue.on( 'progress', handleProgress, this )
+  queue.loadManifest( [
     { id: 'project', src: 'Cubey.wick', type: createjs.Types.BINARY },
     { id: 'wickengine', src: 'wickengine.js', type: createjs.Types.JAVASCRIPT }
-  ])
+  ] )
 }

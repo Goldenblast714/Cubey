@@ -26,7 +26,12 @@
     height: 100px;
     animation: float .6s ease-in-out infinite alternate;
 }
-
+progress {
+    width: 100%;
+    position: relative;
+    top: -1%;
+    border: 0;
+}
 .shadow {
     position: absolute;
     top: calc(50% + 70px);
