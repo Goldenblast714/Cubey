@@ -9,7 +9,7 @@ window.onload = function () {
 
   function handleProgress ( event ) {
     const container = document.getElementById( 'loading-bar' )
-    container.innerHTML = 'Loading... ' + ( ( event.loaded * 100 ).toFixed( 1 ) ) + '%'
+    container.innerHTML = ( ( event.loaded * 100 ).toFixed( 1 ) ) + '%'
     document.querySelector( 'progress' ).value = ( ( event.loaded * 100 ).toFixed( 1 ) )
   }
 

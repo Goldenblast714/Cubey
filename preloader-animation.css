@@ -30,7 +30,13 @@ progress {
     width: 100%;
     position: relative;
     top: -1%;
+    height: 4%;
     border: 0;
+    background: black;
+}
+
+#loading-bar {
+    color: white;
 }
 .shadow {
     position: absolute;
@@ -51,7 +57,6 @@ progress {
     margin-left: -100px;
     width: 200px;
     height: 30px;
-    animation: pulse 1.2s ease-in-out infinite alternate;
     color: white;
     font-size: 20px;
 }
