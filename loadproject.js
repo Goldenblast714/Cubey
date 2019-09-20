@@ -54,7 +54,7 @@ window.onload = function () {
     style="background: linear-gradient(to top right, black, red); height: 100vh; overflow: hidden; color: white; text-align: center; font-size: 3vw;">
     <h1 style="float:left; margin-left: 2em; font-weight: 100;">:(</h1>
     <h3>Oops! An error occured.</h3>
-    <code style="font-size: 0.6em;">${error }</code>
+    <code style="font-size: 0.6em;">${error.toString() }</code>
     <br>
     <small>
       <a style="color: white; text-decoration-style: dotted;"
