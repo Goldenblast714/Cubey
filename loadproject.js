@@ -40,6 +40,27 @@ window.onload = function () {
       onError: error => {
         console.error( 'Project threw an error!' )
         console.error( error )
+        document.documentElement.innerHTML = `
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error!</title>
+    <link rel='shortcut icon' type='image/png' href='./icon.png'/>
+  </head>
+
+  <body
+    style="background: linear-gradient(to top right, black, red); height: 100vh; overflow: hidden; color: white; text-align: center; font-size: 3vw;">
+    <h1 style="float:left; margin-left: 2em; font-weight: 100;">:(</h1>
+    <h3>Oops! An error occured.</h3>
+    <code style="font-size: 0.6em;">${error }</code>
+    <br>
+    <small>
+      <a style="color: white; text-decoration-style: dotted;"
+        href="https://github.com/Goldenblast714/Cubey/issues/new">Report this bug</a>
+    </small>
+  </body>`
       }
     } )
   }
