@@ -1,4 +1,5 @@
 /* globals Wick, createjs, Blob */
+document.title = 'Loading...'
 window.onload = function () {
   function handleComplete () {
     var projectData = queue.getResult( 'project' )
@@ -45,7 +46,7 @@ window.onload = function () {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
     <title>Error!</title>
     <link rel='shortcut icon' type='image/png' href='./icon.png'/>
   </head>
