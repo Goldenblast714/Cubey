@@ -59,7 +59,7 @@ window.onload = function () {
     <br>
     <small>
       <a style="color: white; text-decoration-style: dotted;"
-        href="https://github.com/Goldenblast714/Cubey/issues/new?labels=bug&title=Error on ${error.lineNumber }: ${ encodeURIComponent(error.message) }">Report this bug</a>
+        href="https://github.com/Goldenblast714/Cubey/issues/new?labels=bug&title=Error on line ${error.lineNumber }: ${ encodeURIComponent(error.message) }">Report this bug</a>
     </small>
   </body>`
       }
