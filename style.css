@@ -22,12 +22,6 @@ article section {
   width: 50%;
 }
 
-#fullscreenbutton {
-  cursor: pointer;
-  display: inline;
-  border-bottom: 0.1em solid white;
-}
-
 title {
   display: block;
   font-weight: bold;
