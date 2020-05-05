@@ -65,13 +65,3 @@ iframe {
   background: radial-gradient(black, red);
   box-shadow: 0 0 10px black;
 }
-
-.teasericon {
-  transform: rotate(-15deg);
-}
-
-.teaser {
-  background: yellow;
-  color: black;
-  display: block;
-}
