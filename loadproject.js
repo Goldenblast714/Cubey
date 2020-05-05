@@ -5,13 +5,13 @@ window.onload = function () {
     var projectData = queue.getResult( 'project' )
     Wick.WickFile.fromWickFile( new Blob( [ new Uint8Array( projectData ) ] ), project => {
       playProject( project )
+      document.getElementById('preloader').style.animation = 'fade 1s forwards';
+      setTimeout(document.getElementById('preloader').remove.bind(document.getElementById('preloader')), 1000)
     } )
   }
 
-  function handleProgress ( event ) {
-    const container = document.getElementById( 'loading-bar' )
-    container.innerHTML = ( ( event.loaded * 100 ).toFixed( 1 ) ) + '%'
-    document.querySelector( 'progress' ).value = ( ( event.loaded * 100 ).toFixed( 1 ) )
+  function progress ({progress}) {
+    document.querySelector('progress').value = progress
   }
 
   function playProject ( project ) {
@@ -69,7 +69,7 @@ window.onload = function () {
   var container = document.getElementById( 'wick-canvas-container' )
   var queue = new createjs.LoadQueue()
   queue.on( 'complete', handleComplete, this )
-  queue.on( 'progress', handleProgress, this )
+    queue.on( 'progress', progress, this )
   queue.loadManifest( [
     { id: 'project', src: 'Cubey.wick', type: createjs.Types.BINARY },
     { id: 'wickengine', src: 'wickengine.js', type: createjs.Types.JAVASCRIPT }

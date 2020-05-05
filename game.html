@@ -1,0 +1,61 @@
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Loading...</title>
+        <link rel="stylesheet" href="game.css">
+        <noscript>
+            <meta http-equiv="refresh" content="0;url=noscript.html">
+        </noscript>
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <main>
+                <progress id="prog" value="0" max="1"></progress>
+                <script>
+                    const tip = document.createElement('p')
+                    tip.classList.add('tip')
+                    const tips = top.location.hostname === 'localhost' || top.location.href.toLowerCase().includes('gldblst.tk') ? [
+                        'We once tried to add skins to Cubey. We failed.',
+                        '<a href="https://xkcd.com/10/" target=”_blank”>I\'M TRAPPED AN A CUBEY LOADING SCREEN TIP FACTORY</a>',
+                        `free cubey hacks working ${new Date().getFullYear()} no survey`,
+                        // Easter eggs
+                        'There is a testing room in Cubey. Get to it by going to the credits and clicking "Jack".',
+                        'If you complete Cubey, the lock in <a href="https://goldenblast714.github.io/Codename-Shootgame/">Codename: Shootgame</a> will unlock!'
+                    ] : ['You are viewing this game outside of the real website. No tips for you!'];
+                    (function setTip() {
+                        if (document.getElementById('preloader')) {
+                            tip.innerHTML = `<strong>Fun fact:</strong>   ${tips[Math.floor(Math.random() * tips.length)]}`
+                            setTimeout(setTip, 5000)
+                        }
+                    })()
+                    document.currentScript.replaceWith(tip)
+                </script>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    style="margin: auto; display: block; shape-rendering: auto;" width="200px" height="200px"
+                    viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="10" r="35"
+                        stroke-dasharray="164.93361431346415 56.97787143782138">
+                        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s"
+                            values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+                    </circle>
+                </svg>
+            </main>
+        </div>
+        </div>
+
+        <!-- Wick project canvas container -->
+        <div id="wick-canvas-container"></div>
+        <script src="preloadjs.min.js"></script>
+        <script src="loadproject.js"></script>
+
+    </body>
+
+</html>
