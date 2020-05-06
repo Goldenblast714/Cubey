@@ -60,3 +60,10 @@ iframe {
   box-shadow: 0 0 10px black;
   resize: both;
 }
+
+
+.close {
+  cursor: pointer;
+  float: right;
+  margin-right: 1em;
+}
