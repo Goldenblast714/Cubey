@@ -12,9 +12,7 @@ function playProject ( project ) {
   project.view.fitMode = 'fill'
   project.view.canvasBGColor = '#000000'
 
-  window.onresize = function () {
-    project.view.resize()
-  }
+  window.onresize = project.view.resize.bind(project.view)
   project.view.resize()
   this.project.view.prerender()
 
@@ -22,10 +20,8 @@ function playProject ( project ) {
   project.focus.timeline.playheadPosition = 1
 
   project.play( {
-    onAfterTick: () => {
-      project.view.render()
-    },
-    onError: error => {
+    onAfterTick: project.view.render.bind(project.view),
+    onError (error) {
       console.error( 'Project threw an error!' )
       console.error( error )
       document.documentElement.innerHTML = `
