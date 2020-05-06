@@ -1,47 +1,34 @@
-/* globals Wick, createjs, Blob */
-document.title = 'Loading...'
-window.onload = function () {
-  function handleComplete () {
-    var projectData = queue.getResult( 'project' )
-    Wick.WickFile.fromWickFile( new Blob( [ new Uint8Array( projectData ) ] ), project => {
-      playProject( project )
-      document.getElementById('preloader').style.animation = 'fade 1s forwards';
-      setTimeout(document.getElementById('preloader').remove.bind(document.getElementById('preloader')), 1000)
-    } )
-  }
+/* eslint-env browser */
+/* globals Wick */
+const container = document.getElementById( 'wick-canvas-container' )
+function playProject ( project ) {
+  window.project = project
 
-  function progress ({progress}) {
-    document.querySelector('progress').value = progress
-  }
+  document.title = project.name
 
-  function playProject ( project ) {
-    window.project = project
+  container.innerHTML = ''
+  project.view.renderMode = 'webgl'
+  project.view.canvasContainer = container
+  project.view.fitMode = 'fill'
+  project.view.canvasBGColor = '#000000'
 
-    document.title = project.name
-
-    container.innerHTML = ''
-    project.view.renderMode = 'webgl'
-    project.view.canvasContainer = container
-    project.view.fitMode = 'fill'
-    project.view.canvasBGColor = '#000000'
-
-    window.onresize = function () {
-      project.view.resize()
-    }
+  window.onresize = function () {
     project.view.resize()
-    this.project.view.prerender()
+  }
+  project.view.resize()
+  this.project.view.prerender()
 
-    project.focus = project.root
-    project.focus.timeline.playheadPosition = 1
+  project.focus = project.root
+  project.focus.timeline.playheadPosition = 1
 
-    project.play( {
-      onAfterTick: () => {
-        project.view.render()
-      },
-      onError: error => {
-        console.error( 'Project threw an error!' )
-        console.error( error )
-        document.documentElement.innerHTML = `
+  project.play( {
+    onAfterTick: () => {
+      project.view.render()
+    },
+    onError: error => {
+      console.error( 'Project threw an error!' )
+      console.error( error )
+      document.documentElement.innerHTML = `
 
   <head>
     <meta charset="UTF-8">
@@ -62,16 +49,15 @@ window.onload = function () {
         href="https://github.com/Goldenblast714/Cubey/issues/new?labels=bug&title=Error on line ${error.lineNumber }: ${ encodeURIComponent(error.message) }">Report this bug</a>
     </small>
   </body>`
-      }
-    } )
-  }
-
-  var container = document.getElementById( 'wick-canvas-container' )
-  var queue = new createjs.LoadQueue()
-  queue.on( 'complete', handleComplete, this )
-    queue.on( 'progress', progress, this )
-  queue.loadManifest( [
-    { id: 'project', src: 'Cubey.wick', type: createjs.Types.BINARY },
-    { id: 'wickengine', src: 'wickengine.js', type: createjs.Types.JAVASCRIPT }
-  ] )
+    }
+  } )
 }
+async function start () {
+  Wick.WickFile.fromWickFile(await fetch('Cubey.wick').then(res=>res.blob()), project => {
+    playProject( project )
+    document.getElementById('preloader').style.animation = 'fade 1s forwards'
+    setTimeout(document.getElementById('preloader').remove.bind(document.getElementById('preloader')), 1000)
+  })
+}
+
+start()
