@@ -10,7 +10,7 @@ function playProject ( project ) {
   project.view.renderMode = 'webgl'
   project.view.canvasContainer = container
   project.view.fitMode = 'fill'
-  project.view.canvasBGColor = '#000000'
+  project.view.canvasBGColor = 'transparent'
 
   window.onresize = project.view.resize.bind(project.view)
   project.view.resize()

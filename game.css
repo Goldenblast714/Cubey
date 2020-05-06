@@ -19,7 +19,6 @@ a {
 #preloader {
   position: absolute;
   text-align: center;
-  background: radial-gradient(black, red);
   width: 100%;
   height: 100%;
   display: flex;
