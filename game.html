@@ -45,6 +45,15 @@
                             values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                     </circle>
                 </svg>
+                <script>
+                    fetch('./Cubey.wick', {
+                        method: 'HEAD'
+                    }).then(res => res.headers.get('Content-Length') / 1000000).then(megabytes => {
+                        const size = document.createElement('p')
+                        size.innerText = 'Size: ' + megabytes.toFixed(2) + ' MB'
+                        document.querySelector('main').appendChild(size)
+                    })
+                </script>
             </main>
         </div>
         </div>
