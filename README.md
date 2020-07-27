@@ -1,3 +1,3 @@
-# Cubey 2: Moon's Revenge
+# Cubey
 
 gaming
