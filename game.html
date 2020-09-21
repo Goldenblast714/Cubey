@@ -21,14 +21,14 @@
                 <script>
                     const tip = document.createElement('p')
                     tip.classList.add('tip')
-                    const tips = top.location.hostname === 'localhost' || top.location.href.toLowerCase().includes('gldblst.tk') ? [
+                    const tips = [
                         'We once tried to add skins to Cubey. We failed.',
                         '<a href="https://xkcd.com/10/" target=”_blank”>I\'M TRAPPED AN A CUBEY LOADING SCREEN TIP FACTORY</a>',
                         `free cubey hacks working ${new Date().getFullYear()} no survey`,
                         // Easter eggs
                         'There is a testing room in Cubey. Get to it by going to the credits and clicking "Jack".',
                         'If you complete Cubey, the lock in <a target=”_blank” href="https://goldenblast714.github.io/Codename-Shootgame/">Codename: Shootgame</a> will unlock!'
-                    ] : ['You are viewing this game outside of the real website. No tips for you!'];
+                    ]
                     (function setTip() {
                         if (document.getElementById('preloader')) {
                             tip.innerHTML = `<strong>Fun fact:</strong>   ${tips[Math.floor(Math.random() * tips.length)]}`
