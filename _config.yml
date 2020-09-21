@@ -1,0 +1,4 @@
+# File: _config.yml
+webrick:
+  headers:
+    Content-Security-Policy: "frame-ancestors 'self';"

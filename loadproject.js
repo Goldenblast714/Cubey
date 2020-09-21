@@ -1,5 +1,6 @@
 /* eslint-env browser */
 /* globals Wick */
+
 const container = document.getElementById( 'wick-canvas-container' )
 function playProject ( project ) {
   window.project = project
